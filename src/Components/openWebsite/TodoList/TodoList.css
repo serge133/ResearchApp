@@ -1,0 +1,67 @@
+/* The entire todoList */
+.TodoList {
+    padding: 0 8px;
+}
+
+/* Each Todo list item */
+.TodoList .todoList_draggable {
+    user-select: none;
+    margin-top: 8px;
+    min-height: 30px;
+    background-color: white;
+    overflow: hidden;
+    padding-left: 30px;
+    padding-right: 10px;
+    position: relative;
+    line-height: 30px;
+}
+
+.TodoList .todoList_draggable-finished {
+    user-select: none;
+    margin-top: 8px;
+    min-height: 30px;
+    background-color: white;
+    overflow: hidden;
+    padding-left: 30px;
+    padding-right: 10px;
+    position: relative;
+    line-height: 30px;
+    text-decoration: line-through;
+}
+
+/* The box to finish the todo */
+.TodoList .todoList_draggable .finishItem {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.TodoList .todoList_draggable-finished .finishItem {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TodoList .todoList_draggable-finished .finishItem::before {
+    display: block;
+    content: 'L';
+    transform: rotate(45deg) scale(-1, 1);
+    font-weight: 900;
+    margin: 0 0 2px 2px;
+    color: tomato;
+}

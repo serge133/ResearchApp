@@ -1,0 +1,121 @@
+.openWebsite {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    overflow: hidden;
+    grid-template: 30px calc(100% - 30px)/ 300px 1fr 300px;
+}
+
+/* The top left part of the page */
+.openWebsite .topLeft {
+    transition-duration: 0.5s;
+    grid-area: 1 / 1 / 1 / 1;
+    height: 100%;
+    border-radius: 0 0 7px 0;
+    box-shadow: 2px 2px 7px 2px lightgrey;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.openWebsite .topLeftExpand {
+    transition-duration: 0.5s;
+    grid-area: 1 / 1 / 1 / 1;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Buttons in the top left portion of the screen also the link */
+.openWebsite .topLeft .menuBtn,
+.openWebsite .topLeftExpand .menuBtn {
+    height: 20px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+/* The menu to the left that opens */
+.openWebsite .menu {
+    transition-duration: 0.5s;
+    width: 0;
+    grid-area: 2 / 1 / 2 / 1;
+    border-radius: 0 0 30px 0;
+    border-right: 1px solid #ccc;
+}
+
+.openWebsite .menu .menuItem {
+    transition-duration: 0.5s;
+    border: 1px solid black;
+    border-radius: 100%;
+    height: 45px;
+    width: 45px;
+    margin: 5px 2.5px;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.openWebsite .expandMenu {
+    transition-duration: 0.5s;
+    grid-area: 2 / 1 / 2 / 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+}
+
+.openWebsite .expandMenu .addTodoBtn {
+    width: 50px;
+    height: 20px;
+}
+
+/* A todo list in the menu */
+.openWebsite .expandMenu .TodoList {
+    height: 100%;
+    width: 100%;
+}
+
+/* The top portion with the name and URL of the website */
+.openWebsite .details {
+    grid-area: 1 / 2 / 1 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* The text editor in the middle of the screen */
+.openWebsite .textEditor{
+    /* Subtract the height of the toolbar for it not to overflow */
+    padding-top: 30px;
+    grid-area: 1 / 2 / span 2 / 2;
+    position: relative;
+}
+
+/* Messing with react quill (text editor) */
+.openWebsite .textEditor .ql-container {
+    border: none;
+}
+
+.openWebsite .textEditor .ql-toolbar {
+    position: absolute;
+    top: 0;
+    border: none;
+    padding: 0;
+    height: 30px;
+    overflow: hidden;
+}
+
+.openWebsite .textEditor .ql-toolbar .ql-formats {
+    margin: 3px 0 0 7px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+
+.openWebsite .textEditor .ql-editor {
+    font-size: 1.25rem;
+    padding: 0 10px;
+}

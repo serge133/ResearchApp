@@ -1,0 +1,12 @@
+.App {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    margin: 5vh 5vw;
+}
+
+.App .addWorkspaceBtn {
+    position: fixed;
+    top: 0;
+    left: 0;
+}

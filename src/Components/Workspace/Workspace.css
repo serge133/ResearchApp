@@ -1,0 +1,99 @@
+.workspace {
+    width: 100%;
+    margin: 0 10px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 7px 4px lightgrey;
+}
+/* THhe top of each workspace */
+.workspace .controller {
+    height: 50px;
+    align-items: center;
+}
+
+.workspace .controller .name {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.workspace .controller button {
+    margin-right: 10px;
+    margin-top: 5px;
+    display: inline-block;
+    float: right;
+}
+
+/* The list of websites */
+.workspace .websiteList {
+    height: calc(100% - 50px);
+    overflow: auto;
+    padding: 0 10px 10px 10px;
+}
+
+/* Each website (url and name) plus any more buttons */
+.workspace .websiteList .website {
+    transition-duration: 1s;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 10px;
+    height: 70px;
+}
+
+/* When clicked open you expand the website */
+.workspace .websiteList .expandWebsite {
+    transition-duration: 1s;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 10px;
+    height: 200px;
+    position: relative;
+}
+
+/* The buttons in the website list */
+.workspace .websiteList .website button,
+.workspace .websiteList .expandWebsite button {
+    float: right;
+    border: none;
+    padding: none;
+    height: 25px;
+}
+
+/* The description (textarea) in the expanded website (editable)*/
+.workspace .websiteList .expandWebsite .description {
+    display: block;
+    width: 90%;
+    margin: auto;
+    resize: none;
+    height: calc(90% - 25px);
+}
+
+/* Just a description (unditable)*/
+.workspace .websiteList .website h6 {
+    margin: 0 10px;
+    height: 40px;
+    width: calc(100% - 20px);
+    overflow: hidden;
+}
+
+/* The move to popup */
+.workspace .fadeScreen .moveToPopup {
+    display: flex;
+}
+
+.workspace .fadeScreen .moveToPopup .moveToBtn {
+
+    border-right: 1px solid #ccc;
+    width: 100%;
+    padding: 10px 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.workspace .fadeScreen .moveToPopup .previewWebsites {
+    border: 1px solid #ccc;
+    width: 90%;
+    margin: 7px auto 0 auto;
+    border-radius: 7px;
+    
+}
