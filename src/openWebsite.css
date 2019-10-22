@@ -2,8 +2,8 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    overflow: hidden;
-    grid-template: 30px calc(100% - 30px)/ 300px 1fr 300px;
+    overflow-x: hidden;
+    grid-template: 30px calc(100% - 30px)/ 300px 1fr 200px;
 }
 
 /* The top left part of the page */
@@ -90,9 +90,8 @@
 /* The text editor in the middle of the screen */
 .openWebsite .textEditor{
     /* Subtract the height of the toolbar for it not to overflow */
-    padding-top: 30px;
     grid-area: 1 / 2 / span 2 / 2;
-    position: relative;
+    height: calc(100% - 30px);
 }
 
 /* Messing with react quill (text editor) */
@@ -101,21 +100,21 @@
 }
 
 .openWebsite .textEditor .ql-toolbar {
-    position: absolute;
-    top: 0;
     border: none;
     padding: 0;
-    height: 30px;
-    overflow: hidden;
+    z-index: 3;
+    display: inline-block;
+    position: relative;
 }
 
 .openWebsite .textEditor .ql-toolbar .ql-formats {
     margin: 3px 0 0 7px;
     border: 1px solid #ccc;
     border-radius: 30px;
+
 }
 
 .openWebsite .textEditor .ql-editor {
     font-size: 1.25rem;
-    padding: 0 10px;
+    padding: 0 30px;
 }

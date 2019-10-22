@@ -29,7 +29,7 @@ const Workspace = props => {
             <section className="popup">
                 <input id="addWebsiteName" type="text" placeholder="Website Name"/>
                 <input id="addWebsiteURL" type="text" placeholder="Website URL"/>
-
+                <textarea id="addWebsiteDescription" type="text" placeholder="Description"/>
                 <button onClick={closePopupandAddWebsite}>Submit</button>
             </section>
         </div>
@@ -40,26 +40,12 @@ const Workspace = props => {
         show: false,
         clickedWebsite: {
             id: '',
-            name: '',
-            description: '',
-            url: '',
-            open: false
+            // The rest will be filled in for the website because the button sets the whole website
         }
     });
 
 
-    const closeMoveToPopup = () => {
-        setMoveToPopup({
-            show: false,
-            clickedWebsite: {
-                id: '',
-                name: '',
-                description: '',
-                url: '',
-                open: false
-            }
-        })
-    }
+    const closeMoveToPopup = () => setMoveToPopup({ show: false, clickedWebsite: { id: '' }});
 
     const MoveToPopup = (
         <div className="fadeScreen">
@@ -107,7 +93,7 @@ const Workspace = props => {
         )
     }
 
-    // Converts websites object to an array that it can map
+    // Converts websites object to an array that it can map (!!!)
     const websites = Object.values(workspace.websites);
 
     return (

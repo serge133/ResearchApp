@@ -65,3 +65,18 @@
     margin: 0 0 2px 2px;
     color: tomato;
 }
+
+/* The three dot menu to edit the todo */
+.TodoList .todoList_draggable .editItem,
+.TodoList .todoList_draggable-finished .editItem {
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    opacity: 0.3;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.TodoList .todoList_draggable .editItem:hover,
+.TodoList .todoList_draggable-finished .editItem:hover {opacity: 1;}

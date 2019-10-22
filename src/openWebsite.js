@@ -58,7 +58,9 @@ const OpenWebsite = ({ match }) => {
     }
 
     // Todo List Set up down here!
-    const [openTodoPopup, setTodoPopup] = useState(false);
+    const [popups, setPopups] = useState({
+        addTodo: false,
+    });
 
     const setTodoListOrder = items => {
         setWebsite({...website, todos: items});
@@ -70,10 +72,10 @@ const OpenWebsite = ({ match }) => {
         const todo = {
             id: nanoid(),
             content: todoContent,
-            completed: false
+            finished: false
         }
         const todos = website.todos.concat([todo]);
-        setTodoPopup(false);
+        setPopups({addTodo: false, editTodo: false});
         setWebsite({...website, todos: website.todos.concat([todo])});
 
         // Database
@@ -82,7 +84,7 @@ const OpenWebsite = ({ match }) => {
 
     const todoPopup = (
         <div className="fadeScreen">
-            <div className="closePopup" onClick={() => setTodoPopup(false)}>x</div>
+            <div className="closePopup" onClick={() => setPopups({addTodo:false, editTodo: false})}>x</div>
             <section className="popup">
                <input type="text" id="addTodoContent" placeholder="I am going to do..."/>
                <button onClick={addTodoListItem}>Submit</button>
@@ -97,19 +99,43 @@ const OpenWebsite = ({ match }) => {
         const toggle = !copyTodos[finishIndex].finished;
         copyTodos[finishIndex].finished = toggle;
         setWebsite({...website, todos: copyTodos});
+        axios.put(websiteURL + '/todos.json', copyTodos);
     }
 
-    
+    const editTodo = () => {
+        const todoID = document.getElementById('editSelectedTodoID').value;
+        const todoContent = document.getElementById('editTodoContent').value;
+        const copyTodos = [...website.todos];
+        const editIndex = copyTodos.findIndex( todo => todo.id === todoID);
+        if(editIndex < 0)return;
+        copyTodos[editIndex].content = todoContent;
+        setWebsite({...website, todos: copyTodos});
+        // Database
+        axios.put(websiteURL + '/todos.json', copyTodos);
+    }
+
+    const deleteTodo = () => {
+        const todoID = document.getElementById('editSelectedTodoID').value;
+        const copyTodos = [...website.todos];
+        const deleteIndex = copyTodos.findIndex( todo => todo.id === todoID);
+        if(deleteIndex < 0)return;
+        copyTodos.splice(deleteIndex, 1);
+        setWebsite({...website, todos: copyTodos});
+        axios.put( websiteURL + '/todos.json', copyTodos);
+    }
+
 
     const todolist_props = {
         items: todos,
         setTodoListOrder: setTodoListOrder,
-        finishItem: finishTodo
+        finishItem: finishTodo,
+        editItem: editTodo,
+        deleteItem: deleteTodo
     }
 
     return (
         <div className="openWebsite">
-            {openTodoPopup ? todoPopup : null}
+            {popups.addTodo ? todoPopup : null}
 
             <section className={ expandMenu ? "topLeftExpand" : "topLeft"}>
                 <Link to="/"><img className="menuBtn" src={backSVG} alt="Open Menu"/></Link>
@@ -118,7 +144,7 @@ const OpenWebsite = ({ match }) => {
             </section>
             { expandMenu ?
             <section className="expandMenu">
-                <button onClick={() => setTodoPopup(true)} className="addTodoBtn">+</button>
+                <button onClick={() => setPopups({addTodo: true, editTodo: false})} className="addTodoBtn">+</button>
                 <TodoList {...todolist_props}/>
             </section> :
             <section className="menu"/>

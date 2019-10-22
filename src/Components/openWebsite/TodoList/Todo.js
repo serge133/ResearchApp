@@ -1,5 +1,8 @@
 import React from 'react';
-import './TodoList.css';
+import './Todo.css';
+
+// assets
+import editSVG from '../../../assets/threeDotMenu.svg';
 
 import { Draggable } from 'react-beautiful-dnd'
 
@@ -8,8 +11,10 @@ const TodoList = props => {
     item,
     index,
     getItemStyle,
-    finishItem
+    finishItem,
+    editItemPopup
     } = props;
+
 
     const { id, content, finished } = item;
 
@@ -28,6 +33,10 @@ const TodoList = props => {
                     >
                       <div onClick={() => finishItem(id)} className="finishItem"/>
                       {content}
+                      <img src={editSVG} 
+                        className="editItem" 
+                        alt="Edit Todo" 
+                        onClick={() => editItemPopup(item)}/>
                     </div>
                   )}
         </Draggable>

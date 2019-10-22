@@ -21,10 +21,11 @@ const Workspace = props => {
             // The inputs in the form
             const websiteName = document.getElementById('addWebsiteName').value;
             const websiteURL = document.getElementById('addWebsiteURL').value;
+            const websiteDescription = document.getElementById('addWebsiteDescription').value;
             const website = {
                 id: nanoid(),
                 name: websiteName,
-                description: '',
+                description: websiteDescription,
                 open: false,
                 url: websiteURL,
                 notes: '',

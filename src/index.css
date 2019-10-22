@@ -81,8 +81,5 @@ button:focus {
 }
 
 .popup button {
-  position: absolute;
-  transform: translate(-50%, 0);
-  bottom: 10px;
-  left: 50%;
+
 }
